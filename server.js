@@ -9,8 +9,15 @@ const http = require("http");
 const server = http.createServer(app);
 
 const io = require("socket.io")(server);
+
 app.use(express.static(__dirname + "/public"));
-//app.use(express.static("/public"));y
+//app.use(express.static('public'));
+app.get('/', function (req, res) {
+   res.sendFile( __dirname + "/public/" + "index.html" );
+})
+app.get('/broadcast', function (req, res) {
+    res.sendFile( __dirname + "/public/" + "broadcast.html" );
+ })
 
 
 io.sockets.on("error", e => console.log(e));
