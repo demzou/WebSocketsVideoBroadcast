@@ -1,0 +1,19 @@
+<!--Our layout consists of two basic HTML files that contain a video view that 
+    will later display the video stream we are sending and a CSS file for some basic styling.-->
+
+<!--The index.html file contains a single video view that will display the video stream from 
+    the broadcaster. It also imports the socket.io dependency and our watch.js file.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Viewer</title>
+    <meta charset="UTF-8" />
+    <link href="/styles.css" rel="stylesheet">
+</head>
+<body>
+<video playsinline autoplay></video>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/watch.js"></script>
+</body>
+</html>
