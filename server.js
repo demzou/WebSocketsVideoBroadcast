@@ -5,72 +5,72 @@ const app = express();
 
 const http = require("http");
 
-const url = require('url');
-const path = require('path');
-const fs = require('fs');
+// const url = require('url');
+// const path = require('path');
+// const fs = require('fs');
 
 const PORT = process.env.PORT || 4000;
 
 
-// Callback function to handle requests
-function handleRequest(req, res) {
-    // What did we request?
-    let pathname = req.url;
+// // Callback function to handle requests
+// function handleRequest(req, res) {
+//     // What did we request?
+//     let pathname = req.url;
    
-    // If blank let's ask for index.html
-    if (pathname == "/") {
-      pathname = "/index.html";
-    }
+//     // If blank let's ask for index.html
+//     if (pathname == "/") {
+//       pathname = "/index.html";
+//     }
 
-    if (pathname == "/broadcast") {
-        pathname = "/index.html";
-      }
+//     if (pathname == "/broadcast") {
+//         pathname = "/index.html";
+//       }
    
-    // Ok what's our file extension
-    const ext = path.extname(pathname);
+//     // Ok what's our file extension
+//     const ext = path.extname(pathname);
    
-    // Map extension to file type
-    const typeExt = {
-      ".html": "text/html",
-      ".js": "text/javascript",
-      ".css": "text/css"
-    };
+//     // Map extension to file type
+//     const typeExt = {
+//       ".html": "text/html",
+//       ".js": "text/javascript",
+//       ".css": "text/css"
+//     };
    
-    // What is it?  Default to plain text
-    const contentType = typeExt[ext] || "text/plain";
+//     // What is it?  Default to plain text
+//     const contentType = typeExt[ext] || "text/plain";
    
-    // Read the file from disk
-    fs.readFile(__dirname + pathname,
-      // Callback function for reading
-      function(err, data) {
-        // if there is an error return error report
-        if (err) {
-          res.writeHead(500);
-          return res.end("Error loading " + pathname);
-        }
+//     // Read the file from disk
+//     fs.readFile(__dirname + pathname,
+//       // Callback function for reading
+//       function(err, data) {
+//         // if there is an error return error report
+//         if (err) {
+//           res.writeHead(500);
+//           return res.end("Error loading " + pathname);
+//         }
         
-        // Otherwise, send the data, the contents of the file
-        res.writeHead(200, { "Content-Type": contentType });
-        res.end(data);
-      }
-    );
-  }
+//         // Otherwise, send the data, the contents of the file
+//         res.writeHead(200, { "Content-Type": contentType });
+//         res.end(data);
+//       }
+//     );
+//   }
 
   const server = http.createServer(app);
 
 
-// app.use(express.static(__dirname + "/public"));
-// //app.use(express.static('public'));
-// app.get('/', function (req, res) {
-//    res.sendFile( __dirname + "/Public/" + "index.html" );
-//    //res.sendFile( __dirname + "/" + "index.html" );
-//    //res.sendFile("/public/" + "index.html" );
-// })
-// app.get('/broadcast', function (req, res) {
-//     res.sendFile( __dirname + "/Public/" + "broadcast.html" );
-//     //res.sendFile( __dirname + "/" + "broadcast.html" );
-//     //res.sendFile("/public/" + "broadcast.html" );
-//  })
+app.use(express.static(__dirname + "/public"));
+//app.use(express.static('public'));
+app.get('/', function (req, res) {
+   res.sendFile( __dirname + "/Public/" + "index.html" );
+   //res.sendFile( __dirname + "/" + "index.html" );
+   //res.sendFile("/public/" + "index.html" );
+})
+app.get('/broadcast', function (req, res) {
+    res.sendFile( __dirname + "/Public/" + "broadcast.html" );
+    //res.sendFile( __dirname + "/" + "broadcast.html" );
+    //res.sendFile("/public/" + "broadcast.html" );
+ })
 
  //Socket.io
 const io = require("socket.io")(server);
