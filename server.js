@@ -3,7 +3,7 @@
 const express = require("express");
 const app = express();
 
-const port = 4000;
+const PORT = process.env.PORT || 4000;
 
 const http = require("http");
 const server = http.createServer(app);
@@ -12,7 +12,7 @@ const io = require("socket.io")(server);
 app.use(express.static(__dirname + "/public"));
 
 io.sockets.on("error", e => console.log(e));
-server.listen(port, () => console.log(`Server is running on port ${port}`));
+server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 
 
 //Then we need to implement the connection for the clients and broadcaster to the server. 
