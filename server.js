@@ -56,19 +56,18 @@ const PORT = process.env.PORT || 4000;
 //     );
 //   }
 
-  const server = http.createServer(app);
+const server = http.createServer(app);
 
-
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/Public"));
 //app.use(express.static('public'));
 app.get('/', function (req, res) {
-   res.sendFile( __dirname + "/Public/" + "index.html" );
-   //res.sendFile( __dirname + "/" + "index.html" );
+   //res.sendFile( __dirname + "/Public/" + "index.html" );
+   res.sendFile( __dirname + "/" + "index.html" );
    //res.sendFile("/public/" + "index.html" );
 })
 app.get('/broadcast', function (req, res) {
-    res.sendFile( __dirname + "/Public/" + "broadcast.html" );
-    //res.sendFile( __dirname + "/" + "broadcast.html" );
+    //res.sendFile( __dirname + "/Public/" + "broadcast.html" );
+    res.sendFile( __dirname + "/" + "broadcast.html" );
     //res.sendFile("/public/" + "broadcast.html" );
  })
 
