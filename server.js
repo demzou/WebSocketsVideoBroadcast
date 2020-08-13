@@ -13,10 +13,12 @@ const io = require("socket.io")(server);
 app.use(express.static(__dirname + "/public"));
 //app.use(express.static('public'));
 app.get('/', function (req, res) {
-   res.sendFile( __dirname + "/public/" + "index.html" );
+   //res.sendFile( __dirname + "/public/" + "index.html" );
+   res.sendFile("/public/" + "index.html" );
 })
 app.get('/broadcast', function (req, res) {
-    res.sendFile( __dirname + "/public/" + "broadcast.html" );
+    //res.sendFile( __dirname + "/public/" + "broadcast.html" );
+    res.sendFile("/public/" + "broadcast.html" );
  })
 
 
