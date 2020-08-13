@@ -14,7 +14,8 @@ const config = {
   ]
 };
 
-const socket = io.connect(window.location.origin);
+//const socket = io.connect(window.location.origin);
+const socket = io.connect("https://broadcast-poc1.herokuapp.com/");
 const video = document.querySelector("video");
 
 // Media contrains
