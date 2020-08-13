@@ -66,8 +66,8 @@ app.get('/', function (req, res) {
    //res.sendFile("/public/" + "index.html" );
 })
 app.get('/broadcast', function (req, res) {
-    //res.sendFile( __dirname + "/Public/" + "broadcast.html" );
-    res.sendFile( __dirname + "/" + "broadcast.html" );
+    res.sendFile( __dirname + "/Public/" + "broadcast.html" );
+    //res.sendFile( __dirname + "/" + "broadcast.html" );
     //res.sendFile("/public/" + "broadcast.html" );
  })
 
