@@ -9,8 +9,9 @@ const http = require("http");
 const server = http.createServer(app);
 
 const io = require("socket.io")(server);
-//app.use(express.static(__dirname + "/public"));
-app.use(express.static("/public"));
+app.use(express.static(__dirname + "/public"));
+//app.use(express.static("/public"));y
+
 
 io.sockets.on("error", e => console.log(e));
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
